@@ -12,6 +12,8 @@ class Location(models.Model):
     station = models.CharField(max_length=64, blank=True, null=True)
     # 地域の階層（県、地区、駅など）
     level = models.CharField(max_length=64, blank=True, null=True)
+    # urlを連結した文字列
+    url = models.CharField(max_length=128, blank=True, null=True)
 
     def __str__(self):
         return self.name

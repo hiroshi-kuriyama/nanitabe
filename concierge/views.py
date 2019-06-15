@@ -36,12 +36,13 @@ def swipe(
     # genreの情報が古くなったら更新する機能をつけたい
     genre_list = Genre.objects.filter(location_name=location.name)
     if len(genre_list) == 0:
-        url_list = []
-        for area_url in area_list:
-            if area_url is not None:
-                url_list.append(area_url)
-        location.url = os.path.join(HOME_URL, *url_list) + '/'
-        genre_dict = choice_shop.get_genre_dict(location.url)
+        # url_list = []
+        # for area_url in area_list:
+        #     if area_url is not None:
+        #         url_list.append(area_url)
+        # location.url = os.path.join(HOME_URL, *url_list) + '/'
+        genre_dict = choice_shop.get_genre_dict(
+            os.path.join(HOME_URL, location.url))
         for genre_url, genre_name in genre_dict.items():
             genre, created = Genre.objects.get_or_create(
                 location_name=location.name,
@@ -89,12 +90,12 @@ def choice_location(
     parent_area_list = [prefecture, region, district, station]
     parent_area_dict = dict(zip(area_str_list, parent_area_list))
     parent_location = get_object_or_404(Location, **parent_area_dict)
-    parent_url_list = []
-    for area in area_str_list:
-        if parent_area_dict[area] is not None:
-            parent_url_list.append(
-                getattr(parent_location, area))
-    parent_location.url = os.path.join(*parent_url_list)
+    # parent_url_list = []
+    # for area in area_str_list:
+    #     if parent_area_dict[area] is not None:
+    #         parent_url_list.append(
+    #             getattr(parent_location, area))
+    # parent_location.url = os.path.join(*parent_url_list)
 
     child_area_dict = {}
     for key, value in parent_area_dict.items():

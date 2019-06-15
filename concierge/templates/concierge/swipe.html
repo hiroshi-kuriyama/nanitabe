@@ -7,10 +7,13 @@
 </html>
 <body>
     <p>{{ location.name }}</p>
-    <h1>なに食べたい？</h1>
+    <h1><a href="/concierge/">ナニ食べ</a></h1>
     <h2>{{ genre.name }}</h2>
     <p>{{ shop.name }}</p>
     <a href={{ shop.url }} target="_brank">
         <img src={{ shop.img_url }} width="150" height="150" alt={{ shop.name }}>
+    </a>
+    <a href='/concierge/swipe/{{ location.url }}'>
+        リロード
     </a>
 </body>

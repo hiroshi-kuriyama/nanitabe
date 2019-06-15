@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>nanitabe</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
@@ -15,7 +15,7 @@
 
 
         {% for location in loc_top_list %}
-            <a href='/concierge/choice_location/{{ location.prefecture }}'>
+            <a href='/concierge/choice_location/{{ location.url }}'>
                 <p>{{ location.name }}</p>
             </a>
         {% endfor %}

@@ -99,6 +99,11 @@ def get_location_dict(url_prefecture):
                     'level': 'station'
                 }
             sleep(1)
+    for location_name, _ in location_dict.items(): 
+        location = location_dict[location_name]
+        area_str_list = ['prefecture', 'region', 'district', 'station']
+        part_urls = [location[i] for i in area_str_list if location[i] is not None]
+        location['url'] = os.path.join(*part_urls) + '/'
     return location_dict
 
 
@@ -111,6 +116,7 @@ def save_locations(location_dict):
         location.district = url_dict['district']
         location.station = url_dict['station']
         location.level = url_dict['level']
+        location.url = url_dict['url']
         location.save()
 
 
@@ -121,7 +127,7 @@ def test():
             'region': 'A1301',
             'district': None,
             'station': None,
-            'level': 'region'},
+            'level': 'region',},
         '銀座': {
             'prefecture': 'tokyo',
             'region': 'A1301',
