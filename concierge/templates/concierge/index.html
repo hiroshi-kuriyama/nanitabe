@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1><a href="/concierge/">ナニ食べ</a></h1>
+            <p>{{ user.username }}</p>
+            <a href="{% url 'logout' %}">Log out</a>
+        </div>
+
+
+        {% for location in loc_top_list %}
+            <a href='/concierge/choice_location/{{ location.prefecture }}'>
+                <p>{{ location.name }}</p>
+            </a>
+        {% endfor %}
+        <a href='/concierge/choice_location/tokyo/'>
+            <p>違う場所から探す</p>
+        </a>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{% load static %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1><a href="/concierge/">ナニ食べ</a></h1>
+            <p>{{ user.username }}</p>
+            <a href="{% url 'logout' %}">Log out</a>
+        </div>
+        <p>{{ parent_location.name }}</p>
+        <a href='/concierge/swipe/{{ parent_location.url }}' target="_brank">
+            {{ parent_location.name }}
+        </a>
+
+
+        {% for child_location in child_locations %}
+            <a href='/concierge/choice_location/{{ child_location.url }}'>
+                <p>{{ child_location.name }}</p>
+            </a>
+        {% endfor %}
+    </body>
+</html>
