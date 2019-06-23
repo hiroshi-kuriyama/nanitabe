@@ -125,6 +125,7 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/concierge/'
 
 # Herokuデプロイ用
+import django_heroku
 DEBUG = False
 
 try:
