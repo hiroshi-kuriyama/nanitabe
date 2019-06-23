@@ -23,17 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4p*#(l^@skem0s$6*60=x!2om45y%3$sp4=9u=n6#l2#*!wtq6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# Herokuデプロイ用
+# DEBUG = True
 DEBUG = False
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
 
 ALLOWED_HOSTS = []
 
@@ -133,3 +124,15 @@ STATIC_URL = '/static/'
 
 # ログイン後トップページにリダイレクト
 LOGIN_REDIRECT_URL = '/concierge/'
+
+# Herokuデプロイ用
+DEBUG = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
