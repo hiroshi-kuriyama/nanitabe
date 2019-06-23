@@ -123,3 +123,15 @@ STATIC_URL = '/static/'
 
 # ログイン後トップページにリダイレクト
 LOGIN_REDIRECT_URL = '/concierge/'
+
+# Herokuデプロイ用
+DEBUG = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
